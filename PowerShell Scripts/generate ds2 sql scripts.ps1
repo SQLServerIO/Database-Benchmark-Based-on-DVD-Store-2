@@ -544,3 +544,17 @@ Write-Host   "These scripts are created from template files in same folders with
 Write-Host   "Scripts that are created from template files have '_' $database_size $database_size_str in their name. "
 Write-Host   "User can edit the sql script generated for customizing sql script for more DBFiles per table and change the paths of DBFiles."
 Write-Host   "Now Run CreateConfigFile.pl  script in ds2 folder which will generate configuration file used as input to the driver program."
+
+#***************************************************************************************
+
+#Now move to required folders according to Database Type
+$ord_row 			= ($i_Ord_Rows * 12)
+$cust_row_plus_one 	= ($i_Cust_Rows + 1)
+
+#$SchemaOutputFile  		= Read-Host "Please enter path to store the create database script: "
+#$SchemaFile = New-Object System.IO.StreamWriter $SchemaOutputFile;
+#$SchemaFile.Writeline("testing")
+#$SchemaFile.close()
+
+#***************************************************************************************
+

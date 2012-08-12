@@ -36,8 +36,8 @@ Write-Host   "***********************************"
 $database_size 		= Read-Host "Please enter database size (integer expected) :"
 $database_size 		= $database_size.Trim()
 $database_size_str 	= Read-Host "Please enter whether above database size is in (MB / GB) : "
-$execute_path 		= Read-Host "Please enter path of executables: "
-$output_path  		= Read-Host "Please enter path to store the output: "
+$execute_path 		= Read-Host "Please enter path of executables : "
+$output_path  		= Read-Host "Please enter path to store the output : "
 
 Write-Host  "***********************************"
 
@@ -150,7 +150,7 @@ Write-Host   "Product Rows: $i_Prod_Rows "
 # CSV files will be converted into their windows or linux equivalent according to System type
 
 Write-Host   "Creating CSV files...."
-
+Get-Date
 #These are parameters to C Program
 # Declaration and Initialization is done here for $par4 and $par_Sys_Type 
 
@@ -203,7 +203,9 @@ $par2_End 	= $i_Cust_Rows
 $par3_Fname = "US"
 
 Write-Host   "$par1_Start $par2_End $par3_Fname $par4_DB_Size $par_Sys_Type "
-invoke-expression "$execute_path\ds2_create_cust.exe $par1_Start $par2_End $par3_Fname $par4_DB_Size $par_Sys_Type $output_path\row_cust.csv"
+$execmd = """$execute_path\ds2_create_cust.exe"" $par1_Start $par2_End $par3_Fname $par4_DB_Size $par_Sys_Type $output_path\row_cust.csv"
+Write-Host $execmd
+invoke-expression -command  "&'$execute_path\ds2_create_cust.exe' $par1_Start $par2_End $par3_Fname $par4_DB_Size $par_Sys_Type $output_path\row_cust.csv"
 Write-Host   "Customer CSV Files created "
 
 #***************************************************************************************
@@ -227,9 +229,8 @@ foreach ($month in $par3_ArrMonth)
 	$par2_End 			= ($i_Ord_Rows * $par5_Month_Number)
 
 	Write-Host   "Creating Order CSV file for Month $month"	
-	Write-Host   "$par1_Start $par2_End $month $par4_DB_Size $par5_Month_Number $par_Sys_Type $par_Max_Prod_Id $par_Max_Cust_Id "
-    invoke-expression "$execute_path\ds2_create_orders.exe $par1_Start $par2_End $output_path\$month $par4_DB_Size $par5_Month_Number $par_Sys_Type $par_Max_Prod_Id $par_Max_Cust_Id"
-    Write-Host "$execute_path\ds2_create_orders.exe $par1_Start $par2_End $output_path\$month $par4_DB_Size $par5_Month_Number $par_Sys_Type $par_Max_Prod_Id $par_Max_Cust_Id"
+    invoke-expression "&'$execute_path\ds2_create_orders.exe' $par1_Start $par2_End $output_path\$month $par4_DB_Size $par5_Month_Number $par_Sys_Type $par_Max_Prod_Id $par_Max_Cust_Id"
+
 }
 Write-Host   "All Order, Orderlines, Cust_Hist CSV files created"
 
@@ -243,14 +244,15 @@ $par_n_Prod = $i_Prod_Rows   #Initialize to number of rows for Product table
 
 #Create Inventory CSV file first since we are in orders folder now
 Write-Host   "Creating Inventory CSV file"
-invoke-expression "$execute_path\ds2_create_inv.exe $output_path\ $par_n_Prod $par_Sys_Type $output_path\inv.csv"
+invoke-expression "&'$execute_path\ds2_create_inv.exe' $output_path\ $par_n_Prod $par_Sys_Type $output_path\inv.csv"
 Write-Host   "Inventory CSV file created"
 
 #Create Product CSV file first since we are in prod folder now
 Write-Host   "Creating product CSV file"
-invoke-expression "$execute_path\ds2_create_prod.exe $par_n_Prod $par_Sys_Type $output_path\prod.csv"
+invoke-expression "&'$execute_path\ds2_create_prod.exe' $par_n_Prod $par_Sys_Type $output_path\prod.csv"
 Write-Host   "Product CSV file created"
 
+Get-Date
 #***************************************************************************************
 
 #Now move to required folders according to Database Type
@@ -261,7 +263,6 @@ $cust_row_plus_one 	= ($i_Cust_Rows + 1)
 #$SchemaFile = New-Object System.IO.StreamWriter $SchemaOutputFile;
 #$SchemaFile.Writeline("testing")
 #$SchemaFile.close()
-
 
 #***************************************************************************************
 
