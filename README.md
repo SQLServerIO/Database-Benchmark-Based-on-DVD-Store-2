@@ -36,4 +36,4 @@ Load Generator
 The source code and executible to generate the workloads you can use a middle aspx tier stored in the web directory.  
 You can also generate load using the ds2sqlserverdriver.exe and the config generated earlier.  
 
-you can download just the executeables plus the web load generator files by downloading the release.zip package.  
+you can download just the executeables plus the web load generator files by downloading the [release.zip](https://github.com/SQLServerIO/DVD-Store-Database-Benchmark/blob/master/release.zip "release.zip") package.  
