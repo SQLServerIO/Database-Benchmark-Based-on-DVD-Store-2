@@ -18,10 +18,10 @@ This is where you unpacked the executables to
 Please enter path to store the output :  
 This where you want the CSV files to go. I recommend a seprate drive with plenty of free space.  
 
-generate ds2 sql scripts.ps1 INCOMPLETE  
+generate ds2 sql scripts.ps1 *INCOMPLETE*  
 This script will walk you through a series of questions to generate the database and schema creation scripts.  
 
-generate ds2 config file.ps1 INCOMPLETE  
+generate ds2 config file.ps1 *INCOMPLETE*  
 This script will walk you through a series of questions to generate the configuration file for the load tests.  
 
 SQL Server Scripts  
@@ -35,3 +35,5 @@ Sample batch file Build Windows Executables.bat for you to modify or use to do t
 Load Generator  
 The source code and executible to generate the workloads you can use a middle aspx tier stored in the web directory.  
 You can also generate load using the ds2sqlserverdriver.exe and the config generated earlier.  
+
+you can download just the executeables plus the web load generator files by downloading the release.zip package.  
