@@ -196,15 +196,12 @@ $par2_End   = ($i_Cust_Rows / 2)
 $par3_Fname = "US" 
 
 Write-Host   "Creating Customer CSV files "
-Write-Host   "$par1_Start $par2_End $par3_Fname $par4_DB_Size $par_Sys_Type " 
+invoke-expression -command  "&'$execute_path\ds2_create_cust.exe' $par1_Start $par2_End $par3_Fname $par4_DB_Size $par_Sys_Type $output_path\us_cust.csv"
 
 $par1_Start = (($i_Cust_Rows / 2) + 1)
 $par2_End 	= $i_Cust_Rows
-$par3_Fname = "US"
+$par3_Fname = "ROW"
 
-Write-Host   "$par1_Start $par2_End $par3_Fname $par4_DB_Size $par_Sys_Type "
-$execmd = """$execute_path\ds2_create_cust.exe"" $par1_Start $par2_End $par3_Fname $par4_DB_Size $par_Sys_Type $output_path\row_cust.csv"
-Write-Host $execmd
 invoke-expression -command  "&'$execute_path\ds2_create_cust.exe' $par1_Start $par2_End $par3_Fname $par4_DB_Size $par_Sys_Type $output_path\row_cust.csv"
 Write-Host   "Customer CSV Files created "
 
@@ -253,16 +250,4 @@ invoke-expression "&'$execute_path\ds2_create_prod.exe' $par_n_Prod $par_Sys_Typ
 Write-Host   "Product CSV file created"
 
 Get-Date
-#***************************************************************************************
-
-#Now move to required folders according to Database Type
-$ord_row 			= ($i_Ord_Rows * 12)
-$cust_row_plus_one 	= ($i_Cust_Rows + 1)
-
-#$SchemaOutputFile  		= Read-Host "Please enter path to store the create database script: "
-#$SchemaFile = New-Object System.IO.StreamWriter $SchemaOutputFile;
-#$SchemaFile.Writeline("testing")
-#$SchemaFile.close()
-
-#***************************************************************************************
 

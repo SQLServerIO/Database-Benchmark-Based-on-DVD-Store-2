@@ -1,3 +1,8 @@
+-- Create DB Script: Creates database and tables and triggers
+-- DVD Store Database Version 2.1 Build Script - SQL Server version -
+-- Copyright (C) 2007 Dell, Inc. <dave_jaffe@dell.com> and <tmuirhead@vmware.com>
+-- Last updated 07/23/2010 by GSK
+-- Last updated 08/03/2012 by WDB
 -- Tables 
 SET NOCOUNT ON
 GO

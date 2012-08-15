@@ -219,7 +219,7 @@ main(int argc, char* argv[])
 
 			if (random2(0,1)) strcpy(gender, "M");
 			else strcpy(gender, "F");
-
+		
 			fprintf(fp, "%d,%s,%s,%s,,%s,%s,%05d,%s,%1d,%s,%10.0f,%1d,%16.0f,%s,%s,%s,%d,%d,%s\n",
 			customerid, firstname, lastname, address, city, state, zip, country, region, email, phone, creditcard_type, 
 			creditcard, creditcard_exp, username, password, age, income, gender);

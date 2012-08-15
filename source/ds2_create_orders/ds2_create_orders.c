@@ -190,14 +190,14 @@ switch (size)
 		//this is only valid if you are compiling this on windows with GCC
 		//I will make a valid change for both windows and linux if you want to compile this on linux.
 		//Changed by GSK  
-		if(i_Sys_Type == 0)   //If System is Linux, Append LF only     //Added by GSK
-		{
-			fprintf(FP_orders, "%d,%s,%d,%.2f,%.2f,%.2f\n", orderid, orderdate, customerid, netamount, tax, totalamount);
-		}
-		else if(i_Sys_Type == 1)  //If System is Windows, Append CR and then LF //Added by GSK
-		{
-			fprintf(FP_orders, "%d,%s,%d,%.2f,%.2f,%.2f\r\n", orderid, orderdate, customerid, netamount, tax, totalamount);
-		}
+		// if(i_Sys_Type == 0)   //If System is Linux, Append LF only     //Added by GSK
+		// {
+			// fprintf(FP_orders, "%d,%s,%d,%.2f,%.2f,%.2f\n", orderid, orderdate, customerid, netamount, tax, totalamount);
+		// }
+		// else if(i_Sys_Type == 1)  //If System is Windows, Append CR and then LF //Added by GSK
+		// {
+			// fprintf(FP_orders, "%d,%s,%d,%.2f,%.2f,%.2f\r\n", orderid, orderdate, customerid, netamount, tax, totalamount);
+		// }
 
 		n_items_in_order = random2(1, 9);
 		

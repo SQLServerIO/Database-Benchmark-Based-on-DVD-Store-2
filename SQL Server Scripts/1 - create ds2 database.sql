@@ -3,19 +3,14 @@
 -- DVD Store Database Version 2.1 Build Script - SQL Server version -
 -- Copyright (C) 2007 Dell, Inc. <dave_jaffe@dell.com> and <tmuirhead@vmware.com>
 -- Last updated 07/23/2010 by GSK
-
---prep token replacement for scripting in ps
---h:\mssql\
---DS2
---{dbname}
---{singlefg}
---{numberfiles}
---{primaryfg}
---{ds_misc_fg}
---{ds_cust_fg}
---{ds_orders_fg}
---{ds_ind_fg}
---{ds_log}
+-- Last updated 08/03/2012 by WDB
+-- Simplified structure from previous script.
+-- this script has a primary file gorup used for just sysobjects and capped at 512MB
+-- there are five files in the DS2_DATA file group to spread out the IO load
+-- This is sized for a 100GB load with the five data files at 25GB and the log
+-- at 10% of the total size so 10GB
+-- This script will also enable the full text search index
+-- that is needed for this benchmark
 
 SET NOCOUNT ON
 GO
@@ -42,27 +37,34 @@ CREATE DATABASE DS2 ON PRIMARY
 	(
 		NAME = 'ds_file1.ndf' ,
 		FILENAME = 'h:\mssql\data\ds_file1.ndf' ,
-		SIZE = 10240MB ,
+		SIZE = 20480MB ,
 		FILEGROWTH = 2048MB
 	),   
 	(
 		NAME = 'ds_file2.ndf' ,
 		FILENAME = 'h:\mssql\data\ds_file2.ndf' ,
-		SIZE = 10240MB ,
+		SIZE = 20480MB ,
 		FILEGROWTH = 2048MB
 	),
 	(
 		NAME = 'ds_file3.ndf' ,
 		FILENAME = 'h:\mssql\data\ds_file3.ndf' ,
-		SIZE = 10240MB ,
+		SIZE = 20480MB ,
 		FILEGROWTH = 2048MB
 	),
 	(
 		NAME = 'ds_file4.ndf' ,
 		FILENAME = 'h:\mssql\data\ds_file4.ndf' ,
-		SIZE = 10240MB ,
+		SIZE = 20480MB ,
 		FILEGROWTH = 2048MB
-	) LOG ON
+	), 
+	(
+		NAME = 'ds_file5.ndf' ,
+		FILENAME = 'h:\mssql\data\ds_file5.ndf' ,
+		SIZE = 20480MB ,
+		FILEGROWTH = 2048MB
+	)
+	LOG ON
     (
 		NAME = 'ds_log' , 
 		FILENAME = 'h:\mssql\data\ds_log.ldf' ,

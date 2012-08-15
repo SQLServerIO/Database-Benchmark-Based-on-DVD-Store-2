@@ -10,7 +10,9 @@ generate ds2 bulk load files.ps1:
 This script will walk you through a series of questions to generate the bulk load files.  
 Please enter database size (integer expected) :  
 Any size from 1 MB to hundreds of terabytes can be generated.  
-It takes about 13 minutes on an Intel Q6600 to generate a 10GB data set.  
+It takes about 13 minutes on an Intel Q6600 to generate a 10GB data set and scales linearly.  
+So, 100GB takes 1 hour and 35 minutes on the same machine.  
+As a side note 100GB on the same Q6600 took 59 minutes to bulk load the data.  
 Please enter whether above database size is in (MB / GB) :  
 Specifiy the unit of measure megabytes or gigabytes  
 Please enter path of executables :  
